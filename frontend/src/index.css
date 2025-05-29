@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary-color: #0066CC;
+  --secondary-color: #5856D6;
+  --accent-color: #FF2D55;
+  --success-color: #34C759;
+  --warning-color: #FF9500;
+  --error-color: #FF3B30;
+  --background-color: #F2F2F7;
+  --card-color: #FFFFFF;
+  --text-primary: #000000;
+  --text-secondary: #3C3C43;
+  --text-tertiary: #8E8E93;
+}
+
+
+.card {
+  background-color: var(--card-color);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.2s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.btn {
+  @apply font-medium py-2 px-4 rounded transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-opacity-50;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+}
+
+.btn-secondary {
+  @apply bg-indigo-500 text-white hover:bg-indigo-600 focus:ring-indigo-400;
+}
+
+.btn-accent {
+  @apply bg-pink-500 text-white hover:bg-pink-600 focus:ring-pink-400;
+}
+
+.input-field {
+  @apply block w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200;
+}
+
+.section-title {
+  @apply text-2xl font-bold text-gray-900 mb-4;
+}
