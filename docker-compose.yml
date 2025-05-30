@@ -6,8 +6,6 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 9812341002
       MYSQL_DATABASE: identity_reconciliation
-    ports:
-      - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     restart: unless-stopped
@@ -29,7 +27,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "5173:5173"
+      - "80:5173"   # map container 5173 to port 80 externally for Render web service
     depends_on:
       - backend
     restart: unless-stopped
