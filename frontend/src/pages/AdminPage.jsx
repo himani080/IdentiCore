@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Search, RefreshCw, AlertTriangle } from 'lucide-react';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:3000';
+const API_URL = 'http://13.203.218.89:3000';
 
 const AdminPage = () => {
   const [contacts, setContacts] = useState([]);
