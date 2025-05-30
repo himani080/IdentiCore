@@ -6,6 +6,9 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: 9812341002
       MYSQL_DATABASE: identity_reconciliation
+    # Remove public port exposure for security
+    # ports:
+    #   - "3306:3306"
     volumes:
       - mysql-data:/var/lib/mysql
     restart: unless-stopped
@@ -15,7 +18,9 @@ services:
       context: ./backend
     ports:
       - "3000:3000"
-    
+    # Remove volume mount in prod (use docker image content only)
+    # volumes:
+    #   - ./backend:/app
     env_file:
       - ./backend/.env
     depends_on:
@@ -26,7 +31,7 @@ services:
     build:
       context: ./frontend
     ports:
-      - "80:5173"   
+      - "5173:5173"
     depends_on:
       - backend
     restart: unless-stopped
