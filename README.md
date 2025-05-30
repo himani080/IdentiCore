@@ -1,3 +1,4 @@
+
 # 🛂 Identicore – Identity Reconciliation System
 
 **Identicore** is a full-stack application that resolves overlapping user identities based on email and phone number. It builds relationships between primary and secondary contact records, ensuring unified identity representation.
@@ -25,6 +26,7 @@ You can run the project either using Docker or manually via Node.js:
 ### 🔁 Option 1: Run with Docker (Recommended)
 
 #### ✅ Prerequisites
+
 - [Docker](https://www.docker.com/products/docker-desktop/) installed
 
 #### 📦 Steps
@@ -36,25 +38,28 @@ cd identity-reconciliation
 
 # 2. Start the services
 docker-compose up --build
+```
 
 This will run:
 
-    MySQL service
+- MySQL service  
+- Backend on port **3000**  
+- Frontend on port **5173**  
 
-    Backend on port 3000
+🌐 Open in browser: [http://localhost:5173](http://localhost:5173)
 
-    Frontend on port 5173
+---
 
-Open in browser: http://localhost:5173
-🛠️ Option 2: Run Locally with NPM
-✅ Prerequisites
+### 🛠️ Option 2: Run Locally with NPM
 
-    Node.js installed
+#### ✅ Prerequisites
 
-    MySQL installed and running
+- Node.js installed  
+- MySQL installed and running  
 
-📦 Steps
+#### 📦 Steps
 
+```bash
 # 1. Clone the repository
 git clone https://github.com/himani080/identity-reconciliation.git
 cd identity-reconciliation
@@ -64,28 +69,35 @@ npm run install:all
 
 # 3. Start frontend and backend together
 npm start
+```
 
-    Frontend: http://localhost:5173
+- Frontend: [http://localhost:5173](http://localhost:5173)  
+- Backend: [http://localhost:3000](http://localhost:3000)  
 
-    Backend: http://localhost:3000
+---
 
-📄 .env Setup (Backend)
+### 📄 .env Setup (Backend)
 
-Create a .env file inside the backend/ directory:
+Create a `.env` file inside the `backend/` directory with the following content:
 
+```
 USE_SQLITE=******
 DB_HOST=*****
 DB_USER=********
 DB_PASSWORD=*******
 DB_NAME=identity_reconciliation
 PORT=****
+```
 
-    ℹ️ If you're not using Docker, set DB_HOST=localhost.
+ℹ️ If you're not using Docker, set `DB_HOST=localhost`.
 
-📦 NPM Scripts
+---
 
-From the root directory, these scripts are available:
+### 📦 NPM Scripts
 
+From the root directory, the following scripts are available:
+
+```json
 "scripts": {
   "start": "concurrently \"npm run frontend\" \"npm run backend\"",
   "frontend": "cd frontend && npm run dev",
@@ -94,50 +106,65 @@ From the root directory, these scripts are available:
   "build": "cd frontend && npm run build",
   "deploy": "netlify deploy"
 }
+```
 
-📁 Folder Structure
+---
 
+### 📁 Folder Structure
+
+```
 .
-├── backend/              # Node.js backend
+├── backend/
+   __.env             # Node.js backend
 ├── frontend/             # React frontend
 ├── docker-compose.yml    # Docker setup
-├── .env                  # Backend environment variables
 ├── package.json
+```
 
-🧪 API Usage
-POST /identify
+---
 
-Request:
+### 🧪 API Usage
 
+#### `POST /identify`
+
+**Request:**
+```json
 {
-  "email": "john@example.com",
+  "email": "himani12@gmail.com",
   "phoneNumber": "1234567890"
 }
+```
 
-Response:
-
+**Response:**
+```json
 {
   "contact": {
     "primaryContactId": 1,
-    "emails": ["john@example.com"],
+    "emails": ["himani12@gmail.com"],
     "phoneNumbers": ["1234567890"],
     "secondaryContactIds": [2]
   }
 }
+```
 
-🗃 Database Schema
+---
 
-Table: Contact
-Field	Type	Description
-id	INT	Primary key
-phoneNumber	VARCHAR	Phone number
-email	VARCHAR	Email address
-linkedId	INT	References primary contact (nullable)
-linkPrecedence	ENUM	'primary' or 'secondary'
-createdAt	DATETIME	Created time
-updatedAt	DATETIME	Updated time
-deletedAt	DATETIME	Soft delete (nullable)
-👩‍💻 Developed By
+### 🗃 Database Schema
 
-Himani Arora
+| Field         | Type      | Description                          |
+|---------------|-----------|--------------------------------------|
+| `id`          | INT       | Primary key                          |
+| `phoneNumber` | VARCHAR   | Phone number                         |
+| `email`       | VARCHAR   | Email address                        |
+| `linkedId`    | INT       | References primary contact (nullable)|
+| `linkPrecedence` | ENUM  | `'primary'` or `'secondary'`         |
+| `createdAt`   | DATETIME  | Created time                         |
+| `updatedAt`   | DATETIME  | Updated time                         |
+| `deletedAt`   | DATETIME  | Soft delete (nullable)               |
+
+---
+
+### 👩‍💻 Developed By
+
+**Himani Arora**  
 Backend Developer Intern | MERN Stack Enthusiast
