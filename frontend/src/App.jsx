@@ -9,15 +9,15 @@ import AdminPage from './pages/AdminPage';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50 flex flex-col">
+      <div className="min-h-screen flex flex-col bg-gradient-to-br from-purple-50 via-blue-50 to-pink-50/80">
         <Navbar />
-        <div className="flex-grow">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/identity" element={<IdentityPage />} />
             <Route path="/admin" element={<AdminPage />} />
           </Routes>
-        </div>
+        </main>
         <Footer />
       </div>
     </Router>
