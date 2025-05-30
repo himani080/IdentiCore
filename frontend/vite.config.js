@@ -10,8 +10,10 @@ export default defineConfig({
     strictPort: true,
     open: true,
     proxy: {
-      '/api': 'http://localhost:3000',
-    }
+        '/api': isProduction
+          ? 'http://backend:3000'   // Inside Docker network (EC2)
+          : 'http://localhost:3000' // Local development
+      }
   },
   optimizeDeps: {
     exclude: ['lucide-react'],
