@@ -97,21 +97,7 @@ PORT=****
 
 ℹ️ If you're not using Docker, set `DB_HOST=localhost`.
 
----
 
-### 📦 NPM Scripts
-
-From the root directory, the following scripts are available:
-
-```json
-"scripts": {
-  "start": "concurrently \"npm run frontend\" \"npm run backend\"",
-  "frontend": "cd frontend && npm run dev",
-  "backend": "cd backend && npm start",
-  "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
-  "build": "cd frontend && npm run build",
-  "deploy": "netlify deploy"
-}
 ```
 
 ---
@@ -143,12 +129,16 @@ From the root directory, the following scripts are available:
 
 **Response:**
 ```json
-{
+
   "contact": {
-    "primaryContactId": 1,
-    "emails": ["himani12@gmail.com"],
-    "phoneNumbers": ["1234567890"],
-    "secondaryContactIds": [2]
+    "primaryContactId": 13,
+    "emails": [
+      "himani12@gmail.com"
+    ],
+    "phoneNumbers": [
+      "1234567890"
+    ],
+    "secondaryContactIds": []
   }
 }
 ```
