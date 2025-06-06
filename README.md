@@ -1,95 +1,166 @@
-# Identity Reconciliation System
 
-A full-stack application that implements identity reconciliation as specified in the Bitespeed task. The system identifies and links customer contact information, creating a unified view of customer identities.
+# 🛂 Identicore – Identity Reconciliation System
 
-## Features
+**Identicore** is a full-stack application that resolves overlapping user identities based on email and phone number. It builds relationships between primary and secondary contact records, ensuring unified identity representation.
 
-- Backend API for identity reconciliation
-- Contact linking and relationship management
-- Frontend dashboard to test the API
-- Admin panel to view all contacts
-- Visualization of primary and secondary contacts
-- Real-time API response preview
+🌐 **Live Demo**: [http://52.66.243.92:5173/](http://52.66.243.92:5173/)
+![image](https://github.com/user-attachments/assets/556ee632-a96f-492f-9017-7fc75cf529c7)
+![image](https://github.com/user-attachments/assets/897abd84-5960-4153-8e37-8ccb3ec7e1e9)
 
-## Tech Stack
 
-- **Frontend**: React, Tailwind CSS, Framer Motion, Axios
-- **Backend**: Node.js, Express
-- **Database**: MySQL (with SQLite fallback)
+![image](https://github.com/user-attachments/assets/d72f6853-2d9c-4aa3-9b62-41d1e6a4ed31)
 
-## Project Structure
 
-The project is organized into two main folders:
+---
 
-```
-/frontend - React application
-/backend - Node.js Express API
-```
+## ⚙️ Tech Stack
 
-## Getting Started
+- **Frontend**: React.js + Tailwind CSS (`http://localhost:5173`)
+- **Backend**: Node.js + Express (`http://localhost:3000`)
+- **Database**: MySQL (`localhost:3306`)
+- **Tools**: Docker, Docker Compose, Concurrently
+- **Deployment**: AWS EC2
 
-### Prerequisites
+---
 
-- Node.js (v14 or higher)
-- MySQL (optional, will fall back to SQLite if MySQL is not available)
+## 🚀 Getting Started
 
-### Installation
+You can run the project either using Docker or manually via Node.js:
 
-1. Clone the repository
-2. Install dependencies:
+---
+
+### 🔁 Option 1: Run with Docker (Recommended)
+
+#### ✅ Prerequisites
+
+- [Docker](https://www.docker.com/products/docker-desktop/) installed
+
+#### 📦 Steps
 
 ```bash
+# 1. Clone the repository
+git clone https://github.com/himani080/identity-reconciliation.git
+cd identity-reconciliation
+
+# 2. Start the services
+docker-compose up --build
+```
+
+This will run:
+
+- MySQL service  
+- Backend on port **3000**  
+- Frontend on port **5173**  
+
+🌐 Open in browser: [http://localhost:5173](http://localhost:5173)
+
+---
+
+### 🛠️ Option 2: Run Locally with NPM
+
+#### ✅ Prerequisites
+
+- Node.js installed  
+- MySQL installed and running  
+
+#### 📦 Steps
+
+```bash
+# 1. Clone the repository
+git clone https://github.com/himani080/identity-reconciliation.git
+cd identity-reconciliation
+
+# 2. Install all dependencies
 npm run install:all
-```
 
-3. Configure the database:
-
-```bash
-# Copy .env.example to .env in the backend folder
-cp backend/.env.example backend/.env
-# Edit .env file with your database credentials
-```
-
-4. Start the application:
-
-```bash
+# 3. Start frontend and backend together
 npm start
 ```
 
-This will start both the frontend and backend servers.
+- Frontend: [http://localhost:5173](http://localhost:5173)  
+- Backend: [http://localhost:3000](http://localhost:3000)  
 
-## API Endpoints
+---
 
-### POST /identify
+### 📄 .env Setup (Backend)
 
-Identifies a contact based on email and/or phone number.
+Create a `.env` file inside the `backend/` directory with the following content:
 
-**Request Body:**
+```
+USE_SQLITE=******
+DB_HOST=*****
+DB_USER=********
+DB_PASSWORD=*******
+DB_NAME=identity_reconciliation
+PORT=****
+```
 
+ℹ️ If you're not using Docker, set `DB_HOST=localhost`.
+
+
+```
+
+---
+
+### 📁 Folder Structure
+
+```
+.
+├── backend/
+   __.env             # Node.js backend
+├── frontend/             # React frontend
+├── docker-compose.yml    # Docker setup
+├── package.json
+```
+
+---
+
+### 🧪 API Usage
+
+#### `POST /identify`
+
+**Request:**
 ```json
 {
-  "email": "example@example.com",
-  "phoneNumber": "+1234567890"
+  "email": "himani12@gmail.com",
+  "phoneNumber": "1234567890"
 }
 ```
 
 **Response:**
-
 ```json
-{
+
   "contact": {
-    "primaryContactId": 1,
-    "emails": ["example@example.com"],
-    "phoneNumbers": ["+1234567890"],
+    "primaryContactId": 13,
+    "emails": [
+      "himani12@gmail.com"
+    ],
+    "phoneNumbers": [
+      "1234567890"
+    ],
     "secondaryContactIds": []
   }
 }
 ```
 
-### GET /identify/contacts
+---
 
-Returns all contacts (for admin purposes).
+### 🗃 Database Schema
 
-## License
+| Field         | Type      | Description                          |
+|---------------|-----------|--------------------------------------|
+| `id`          | INT       | Primary key                          |
+| `phoneNumber` | VARCHAR   | Phone number                         |
+| `email`       | VARCHAR   | Email address                        |
+| `linkedId`    | INT       | References primary contact (nullable)|
+| `linkPrecedence` | ENUM  | `'primary'` or `'secondary'`         |
+| `createdAt`   | DATETIME  | Created time                         |
+| `updatedAt`   | DATETIME  | Updated time                         |
+| `deletedAt`   | DATETIME  | Soft delete (nullable)               |
 
-MIT
+---
+
+### 👩‍💻 Developed By
+
+**Himani Arora**  
+Backend Developer Intern | MERN Stack Enthusiast
