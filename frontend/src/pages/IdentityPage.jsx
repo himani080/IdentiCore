@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, Send, Copy, CheckCircle, AlertCircle } from 'lucide-react';
 import axios from 'axios';
 
-const API_URL = 'http://13.203.218.89:3000';
+const API_URL = 'http://52.66.243.92:3000';
 
 const IdentityPage = () => {
   const [email, setEmail] = useState('');
