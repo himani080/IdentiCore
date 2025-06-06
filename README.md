@@ -3,7 +3,7 @@
 
 **Identicore** is a full-stack application that resolves overlapping user identities based on email and phone number. It builds relationships between primary and secondary contact records, ensuring unified identity representation.
 
-🌐 **Live Demo**: [http://13.203.218.89:5173](http://13.203.218.89:5173)
+🌐 **Live Demo**: [[http://13.203.218.89:5173](http://52.66.243.92:5173/)]
 ![image](https://github.com/user-attachments/assets/556ee632-a96f-492f-9017-7fc75cf529c7)
 ![image](https://github.com/user-attachments/assets/897abd84-5960-4153-8e37-8ccb3ec7e1e9)
 
